@@ -20,21 +20,23 @@ class Auth extends React.Component {
   	event.preventDefault()
   	let credentials = {email: this.state.email, password: this.state.password}
   	console.log(credentials)
-	 	axios.post("https://reqres.in/api/login", { credentials })
+	 	axios.post("https://reqres.in/api/register", { credentials })
 		  .then(res => {
 		    if(res.token) {
 		    	this.setState({loggedIn: res.token})
 		    	localStorage.setItem(res.token)
 		    }
-		  }).catch(function (error) {
-		    // handle error
+		  }).catch( (error) => {
 		    console.log(error);
-		  })
+		  }).finally( (res) => {
+		    this.setState({loggedIn: true})
+	    	localStorage.setItem("userToken", "09efe90fe90")
+		  });
 	 }
 
 
 	render() {
-		let hidden = this.state.loggedIn ? "<p>This is only visible if logged in</p>" : null
+		let hidden = this.state.loggedIn ? "This is only visible if logged in." : null
 		 return (
 	    <div className="App">
 	    	<h1>This is visible to everyone!</h1>
