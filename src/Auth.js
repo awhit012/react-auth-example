@@ -24,20 +24,23 @@ class Auth extends React.Component {
 		  .then(res => {
 		    if(res.token) {
 		    	this.setState({loggedIn: res.token})
+	    		localStorage.setItem("userToken", "09efe90fe90")
 		    	localStorage.setItem(res.token)
 		    }
 		  }).catch( (error) => {
 		    console.log(error);
 		  }).finally( (res) => {
-		    this.setState({loggedIn: true})
-	    	localStorage.setItem("userToken", "09efe90fe90")
+		  	// uncomment to pretend registration is successful
+		  	let fakeToken = "09efe90fe90"
+		    this.setState({loggedIn: fakeToken})
+	    	localStorage.setItem("userToken", fakeToken)
 		  });
 	 }
 
 
 	render() {
 		let hidden = this.state.loggedIn ? "This is only visible if logged in." : null
-		 return (
+		return (
 	    <div className="App">
 	    	<h1>This is visible to everyone!</h1>
 	    	{hidden}
