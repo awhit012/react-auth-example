@@ -24,16 +24,15 @@ class Auth extends React.Component {
 		  .then(res => {
 		    if(res.token) {
 		    	this.setState({loggedIn: res.token})
-	    		localStorage.setItem("userToken", "09efe90fe90")
-		    	localStorage.setItem(res.token)
+	    		localStorage.setItem("userToken", res.token)
 		    }
 		  }).catch( (error) => {
 		    console.log(error);
 		  }).finally( (res) => {
 		  	// uncomment to pretend registration is successful
-		  	let fakeToken = "09efe90fe90"
-		    this.setState({loggedIn: fakeToken})
-	    	localStorage.setItem("userToken", fakeToken)
+		  	// let fakeToken = "09efe90fe90"
+		    // this.setState({loggedIn: fakeToken})
+	    	// localStorage.setItem("userToken", fakeToken)
 		  });
 	 }
 
